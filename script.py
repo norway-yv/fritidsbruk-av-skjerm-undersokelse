@@ -108,12 +108,44 @@ def create_list(hasincreased, what, start, end, data):
     return output
     
 
+def getinfo(ids, data):
+    return [data[id] for id in ids]
+    
+def howmany(hasthis, incolumn, data):
+    output = 0
+    mydata = data[incolumn]
+    for id in mydata.keys():
+        if mydata[id] == hasthis:
+            output += 1
+    return output
 
+def writetheage(data1, realdata):
+    data = [realdata[i] for i in data1]
+    exists = len(data) > 0
+    if exists:
+        print("    Av disse er:")
+        agespresent = []
+        for i in range(len(data)):
+            if data[i]["age"] not in agespresent:
+                agespresent.append(data[i]["age"])
+        howmanyinages = {}
+        for age in agespresent:
+            howmanyinages[age] = 0
+        for i in range(len(data)):
+            howmanyinages[data[i]["age"]] += 1
+        for age in howmanyinages
 
+    print(data)
 
 data = get_data("data.csv")
 
 converted = convert_data(data)
+
+locations = []
+for id in converted[1]["location"].keys():
+    if converted[1]["location"][id] not in locations:
+        locations.append(converted[1]["location"][id])
+
 """
 print(converted[0])
 print(converted[1])
@@ -139,7 +171,19 @@ plt.title("Hvor mange som bruker skjerm på fritiden hvor mye før, under, og et
 plt.ylabel("Antall personer")
 plt.show()
 
-print("Her kommer litt statistikk:")
+print("Av alle som har svart kommer:")
+for location in locations:
+    print(howmany(location, "location", converted[1]), "fra", location)
+print()
+print("Vi har fått svar fra:")
+for age in ["13-15 år", "16-17 år", "18-19 år"]:
+    if howmany(age, "age", converted[1]) != None:
+        print(howmany(age, "age", converted[1]), "i aldersgruppen", age)
+print()
+print("Totalt har vi fått svar fra", len(converted[0].keys()), "personer")
+
+print()
+print()
 print(len(create_list(True, "training", "before", "during", converted[0])), "har trent mer under pandemien enn før den")
 print(len(create_list(True, "training", "before", "after", converted[0])), "har trent mer etter pandemien enn før den")
 print(len(create_list(True, "training", "during", "after", converted[0])), "har trent mer etter pandemien enn under den")
@@ -154,3 +198,6 @@ print(len(create_list(False, "screen", "before", "during", converted[0])), "har 
 print(len(create_list(False, "screen", "before", "after", converted[0])), "har brukt skjerm mindre etter pandemien enn før den")
 print(len(create_list(False, "screen", "during", "after", converted[0])), "har brukt skjerm mindre etter pandemien enn under den")
 print()
+
+
+writetheage(create_list(True, "training", "before", "after", converted[0]), converted[0])
