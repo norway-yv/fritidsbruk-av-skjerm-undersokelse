@@ -1,3 +1,5 @@
+#Programmet er på engelsk for å kunne hjelpes av Tabnine, Kite, og GitHub Copilot. Dokumentasjonen er på engelsk for GitHub Copilot som leser hele programmet.
+
 """Documentation"""
 # (c) Yrjar Vederhus, 2022
 # get_data:
@@ -29,6 +31,7 @@
 
 
 import pandas as pd
+import matplotlib.pyplot as plt
 
 def get_data(filename):
     """Returns pandas element with csv data from filename. filename is str, .csv file"""
@@ -74,10 +77,44 @@ def convert_data(data):
         by_column["belief"][id] = by_id[id]["belief"]
     
     return (by_id, by_column)
-    
+
+def number_options(column, data):
+    """I'm not going to document anything. As long as I understand it next week I am happy."""
+    if column == "training":
+        output = {"Mindre enn 2 timer per uke": {"before": 0, "during": 0, "after": 0}, "2-4 timer per uke": {"before": 0, "during": 0, "after": 0}, "4-6 timer per uke": {"before": 0, "during": 0, "after": 0}, "Mer enn 6 timer per uke": {"before": 0, "during": 0, "after": 0}}
+    elif column == "screen":
+        output = {"Mindre enn 1 time": {"before": 0, "during": 0, "after": 0}, "1-3 timer": {"before": 0, "during": 0, "after": 0}, "3-5 timer": {"before": 0, "during": 0, "after": 0}, "5-8 timer": {"before": 0, "during": 0, "after": 0}, "Mer enn 8 timer": {"before": 0, "during": 0, "after": 0}}
+    mydata = data[column]
+    for id in mydata.keys():
+        for time in ["before", "during", "after"]:
+            output[mydata[id][time]][time] += 1
+
+    return output
 
 data = get_data("data.csv")
 
 converted = convert_data(data)
+"""
 print(converted[0])
 print(converted[1])
+print()
+print(number_options("training", converted[1]))
+"""
+number_options_output = number_options("training", converted[1])
+for key in number_options_output.keys():
+    if number_options_output[key] != {"before": 0, "during": 0, "after": 0}:
+        plt.plot(["Før pandemien", "Under pandemien", "Etter pandemien"], number_options_output[key].values(), label=key)
+plt.legend()
+plt.title("Hvor mange som trener hvor mye før, under, og etter pandemien")
+plt.ylabel("Antall personer")
+plt.show()
+
+
+number_options_output = number_options("screen", converted[1])
+for key in number_options_output.keys():
+    if number_options_output[key] != {"before": 0, "during": 0, "after": 0}:
+        plt.plot(["Før pandemien", "Under pandemien", "Etter pandemien"], number_options_output[key].values(), label=key)
+plt.legend()
+plt.title("Hvor mange som bruker skjerm på fritiden hvor mye før, under, og etter pandemien")
+plt.ylabel("Antall personer")
+plt.show()
