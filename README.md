@@ -6,16 +6,16 @@ Dette repositoryet inneholder filer brukt for analyse av resultater etter en und
 - [x] Lag eksempelfil for testing
 - [x] Lag algoritme for plotting av graf med x-akse ["Før", "Under", "Etter"] og y-akse [timealternativ1, alt2, ...]
 - [X] Plott grafer med overnevnte algoritme for trening og skjermbruk
-- [ ] Lag liste over individer med:
-  - [ ] Økning i trening før-under
-  - [ ] Økning i trening under-etter
-  - [ ] Økning i trening før-etter
-  - [ ] Samme for nedgang
-  - [ ] Økning i skjermtid før-under
-  - [ ] Økning i skjermtid under-etter
-  - [ ] Økning i skjermtid før-etter
-  - [ ] Samme for nedgang
-- [ ] Print len(disse listene)
+- [x] Lag liste over individer med:
+  - [x] Økning i trening før-under
+  - [x] Økning i trening under-etter
+  - [x] Økning i trening før-etter
+  - [x] Samme for nedgang
+  - [x] Økning i skjermtid før-under
+  - [x] Økning i skjermtid under-etter
+  - [x] Økning i skjermtid før-etter
+  - [x] Samme for nedgang
+- [xø] Print len(disse listene)
 - [ ] Demografi for disse listene:
    - [ ] Alder
    - [ ] Hvorfra
