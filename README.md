@@ -15,7 +15,7 @@ Dette repositoryet inneholder filer brukt for analyse av resultater etter en und
   - [x] Økning i skjermtid under-etter
   - [x] Økning i skjermtid før-etter
   - [x] Samme for nedgang
-- [xø] Print len(disse listene)
+- [x] Print len(disse listene)
 - [ ] Demografi for disse listene:
    - [ ] Alder
    - [ ] Hvorfra
