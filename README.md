@@ -4,7 +4,7 @@ Dette repositoryet inneholder filer brukt for analyse av resultater etter en und
 ## To do:
 - [ ] Last ned excel-fil med resultater
 - [x] Lag eksempelfil for testing
-- [ ] Lag algoritme for plotting av graf med x-akse ["Før", "Under", "Etter"] og y-akse [timealternativ1, alt2, ...]
+- [x] Lag algoritme for plotting av graf med x-akse ["Før", "Under", "Etter"] og y-akse [timealternativ1, alt2, ...]
 - [ ] Plott grafer med overnevnte algoritme for trening og skjermbruk
 - [ ] Lag liste over individer med:
   - [ ] Økning i trening før-under
