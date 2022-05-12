@@ -91,6 +91,26 @@ def number_options(column, data):
 
     return output
 
+def create_list(hasincreased, what, start, end, data):
+    output = []
+    if what == "training":
+        reference = ["Mindre enn 2 timer per uke", "2-4 timer per uke", "4-6 timer per uke", "Mer enn 6 timer per uke"]
+    elif what == "screen":
+        reference = ["Mindre enn 1 time", "1-3 timer", "3-5 timer", "5-8 timer", "Mer enn 8 timer"]
+    
+    for id in data.keys():
+        isgreater = reference.index(data[id][what][start]) < reference.index(data[id][what][end])
+        if (hasincreased and isgreater):
+            output.append(id)
+        issmaller = reference.index(data[id][what][start]) > reference.index(data[id][what][end])
+        if (not hasincreased and issmaller):
+            output.append(id)
+    return output
+    
+
+
+
+
 data = get_data("data.csv")
 
 converted = convert_data(data)
@@ -118,3 +138,19 @@ plt.legend()
 plt.title("Hvor mange som bruker skjerm på fritiden hvor mye før, under, og etter pandemien")
 plt.ylabel("Antall personer")
 plt.show()
+
+print("Her kommer litt statistikk:")
+print(len(create_list(True, "training", "before", "during", converted[0])), "har trent mer under pandemien enn før den")
+print(len(create_list(True, "training", "before", "after", converted[0])), "har trent mer etter pandemien enn før den")
+print(len(create_list(True, "training", "during", "after", converted[0])), "har trent mer etter pandemien enn under den")
+print(len(create_list(False, "training", "before", "during", converted[0])), "har trent mindre under pandemien enn før den")
+print(len(create_list(False, "training", "before", "after", converted[0])), "har trent mindre etter pandemien enn før den")
+print(len(create_list(False, "training", "during", "after", converted[0])), "har trent mindre etter pandemien enn under den")
+print()
+print(len(create_list(True, "screen", "before", "during", converted[0])), "har brukt skjerm mer under pandemien enn før den")
+print(len(create_list(True, "screen", "before", "after", converted[0])), "har brukt skjerm mer etter pandemien enn før den")
+print(len(create_list(True, "screen", "during", "after", converted[0])), "har brukt skjerm mer etter pandemien enn under den")
+print(len(create_list(False, "screen", "before", "during", converted[0])), "har brukt skjerm mindre under pandemien enn før den")
+print(len(create_list(False, "screen", "before", "after", converted[0])), "har brukt skjerm mindre etter pandemien enn før den")
+print(len(create_list(False, "screen", "during", "after", converted[0])), "har brukt skjerm mindre etter pandemien enn under den")
+print()
