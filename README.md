@@ -19,5 +19,6 @@ Dette repositoryet inneholder filer brukt for analyse av resultater etter en und
 - [ ] Demografi for disse listene:
    - [ ] Alder
    - [ ] Hvorfra
-   - [ ] Overlapp?
-       - [ ] Hvor mange prosent har økning/nedgang i trening samme periode som økning/nedgang skjermtid?
+   - [ ] Hvor mange prosent har økning/nedgang i trening samme periode som økning/nedgang skjermtid?
+### To Do akkurat nå:
+- [ ] Alder, siste commit er ikke funksjonell og gir errors. Skal skrive prosenter i for loop
