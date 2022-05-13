@@ -220,8 +220,12 @@ for location in locations:
 print()
 print("Vi har fått svar fra:")
 for age in ["13-15 år", "16-17 år", "18-19 år"]:
-    if howmany(age, "age", converted[1]) != None:
+    if howmany(age, "age", converted[1]) != 0:
         print(howmany(age, "age", converted[1]), "i aldersgruppen", age, ",\t", (howmany(age, "age", converted[1])/len(converted[0].keys()))*100, "%", "av totalen.")
+print()
+for gender in ["Mann", "Kvinne"]:
+    if howmany(gender, "gender", converted[1]) != 0:
+        print(howmany(gender, "gender", converted[1]), "har kjønnet", gender, ",\t", (howmany(gender, "gender", converted[1])/len(converted[0].keys()))*100, "%", "av totalen.")
 print()
 print("Totalt har vi fått svar fra", len(converted[0].keys()), "personer")
 
