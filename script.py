@@ -177,7 +177,7 @@ def writethebelief(data1, realdata):
     data = [realdata[i] for i in data1]
     exists = len(data) > 0
     if exists:
-        print("    Av disse er:")
+        print("    Av disse tror:")
         beliefspresent = []
         for i in range(len(data)):
             if data[i]["belief"] not in beliefspresent:
@@ -192,7 +192,7 @@ def writethebelief(data1, realdata):
             print("    ", (howmanyinbeliefs[belief]/numberanswered)*100, "%", belief)
 
 def writeall(hasincreased, what, start, end, data, mystring):
-    print(len(create_list(hasincreased, what, start, end, data)), mystring+",\t", (len(create_list(hasincreased, what, start, end, data)))/len(data.keys())*100, "%", "av totalen")
+    print(len(create_list(hasincreased, what, start, end, data)), mystring + ",", (len(create_list(hasincreased, what, start, end, data)))/len(data.keys())*100, "%", "av totalen")
     writetheage(create_list(hasincreased, what, start, end, data), data)
     writethelocation(create_list(hasincreased, what, start, end, data), data)
     writethegender(create_list(hasincreased, what, start, end, data), data)
@@ -245,6 +245,11 @@ print()
 for gender in ["Mann", "Kvinne"]:
     if howmany(gender, "gender", converted[1]) != 0:
         print(howmany(gender, "gender", converted[1]), "har kjønnet", gender, ",\t", (howmany(gender, "gender", converted[1])/len(converted[0].keys()))*100, "%", "av totalen.")
+print()
+print("Om hvorvidt man mener skjermtid har økt fra før til etter pandemien svarer:")
+for belief in ["Ja", "Nei"]:
+    if howmany(belief, "belief", converted[1]) != 0:
+        print(howmany(belief, "belief", converted[1]), belief, ",\t", (howmany(belief, "belief", converted[1])/len(converted[0].keys()))*100, "%", "av totalen.")
 print()
 print("Totalt har vi fått svar fra", len(converted[0].keys()), "personer")
 
