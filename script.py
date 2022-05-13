@@ -129,13 +129,31 @@ def writetheage(data1, realdata):
             if data[i]["age"] not in agespresent:
                 agespresent.append(data[i]["age"])
         howmanyinages = {}
+        numberanswered = len(data)
         for age in agespresent:
             howmanyinages[age] = 0
         for i in range(len(data)):
             howmanyinages[data[i]["age"]] += 1
-        for age in howmanyinages
+        for age in howmanyinages.keys():
+            print("    ", (howmanyinages[age]/numberanswered)*100, "%", "i aldersgruppen", age)
 
-    print(data)
+def writethelocation(data1, realdata):
+    data = [realdata[i] for i in data1]
+    exists = len(data) > 0
+    if exists:
+        print("    Av disse er:")
+        locationspresent = []
+        for i in range(len(data)):
+            if data[i]["location"] not in locationspresent:
+                locationspresent.append(data[i]["location"])
+        howmanyinlocations = {}
+        numberanswered = len(data)
+        for location in locationspresent:
+            howmanyinlocations[location] = 0
+        for i in range(len(data)):
+            howmanyinlocations[data[i]["location"]] += 1
+        for location in howmanyinlocations.keys():
+            print("    ", (howmanyinlocations[location]/numberanswered)*100, "%", "fra", location)
 
 data = get_data("data.csv")
 
@@ -173,31 +191,32 @@ plt.show()
 
 print("Av alle som har svart kommer:")
 for location in locations:
-    print(howmany(location, "location", converted[1]), "fra", location)
+    print(howmany(location, "location", converted[1]), "fra", location, ",\t", (howmany(location, "location", converted[1])/len(converted[0].keys()))*100, "%", "av totalen.")
 print()
 print("Vi har fått svar fra:")
 for age in ["13-15 år", "16-17 år", "18-19 år"]:
     if howmany(age, "age", converted[1]) != None:
-        print(howmany(age, "age", converted[1]), "i aldersgruppen", age)
+        print(howmany(age, "age", converted[1]), "i aldersgruppen", age, ",\t", (howmany(age, "age", converted[1])/len(converted[0].keys()))*100, "%", "av totalen.")
 print()
 print("Totalt har vi fått svar fra", len(converted[0].keys()), "personer")
 
 print()
 print()
-print(len(create_list(True, "training", "before", "during", converted[0])), "har trent mer under pandemien enn før den")
-print(len(create_list(True, "training", "before", "after", converted[0])), "har trent mer etter pandemien enn før den")
-print(len(create_list(True, "training", "during", "after", converted[0])), "har trent mer etter pandemien enn under den")
-print(len(create_list(False, "training", "before", "during", converted[0])), "har trent mindre under pandemien enn før den")
-print(len(create_list(False, "training", "before", "after", converted[0])), "har trent mindre etter pandemien enn før den")
-print(len(create_list(False, "training", "during", "after", converted[0])), "har trent mindre etter pandemien enn under den")
+print(len(create_list(True, "training", "before", "during", converted[0])), "har trent mer under pandemien enn før den,\t", (len(create_list(True, "training", "before", "during", converted[0])))/len(converted[0].keys())*100, "%", "av totalen")
+print(len(create_list(True, "training", "before", "after", converted[0])), "har trent mer etter pandemien enn før den,\t", len(create_list(True, "training", "before", "after", converted[0]))/len(converted[0].keys())*100, "%", "av totalen")
+print(len(create_list(True, "training", "during", "after", converted[0])), "har trent mer etter pandemien enn under den,\t", len(create_list(True, "training", "during", "after", converted[0]))/len(converted[0].keys())*100, "%", "av totalen")
+print(len(create_list(False, "training", "before", "during", converted[0])), "har trent mindre under pandemien enn før den,\t", len(create_list(False, "training", "before", "during", converted[0]))/len(converted[0].keys())*100, "%", "av totalen")
+print(len(create_list(False, "training", "before", "after", converted[0])), "har trent mindre etter pandemien enn før den,\t", len(create_list(False, "training", "before", "after", converted[0]))/len(converted[0].keys())*100, "%", "av totalen")
+print(len(create_list(False, "training", "during", "after", converted[0])), "har trent mindre etter pandemien enn under den,\t", len(create_list(False, "training", "during", "after", converted[0]))/len(converted[0].keys())*100, "%", "av totalen")
 print()
-print(len(create_list(True, "screen", "before", "during", converted[0])), "har brukt skjerm mer under pandemien enn før den")
-print(len(create_list(True, "screen", "before", "after", converted[0])), "har brukt skjerm mer etter pandemien enn før den")
-print(len(create_list(True, "screen", "during", "after", converted[0])), "har brukt skjerm mer etter pandemien enn under den")
-print(len(create_list(False, "screen", "before", "during", converted[0])), "har brukt skjerm mindre under pandemien enn før den")
-print(len(create_list(False, "screen", "before", "after", converted[0])), "har brukt skjerm mindre etter pandemien enn før den")
-print(len(create_list(False, "screen", "during", "after", converted[0])), "har brukt skjerm mindre etter pandemien enn under den")
+print(len(create_list(True, "screen", "before", "during", converted[0])), "har brukt skjerm mer under pandemien enn før den,\t", len(create_list(True, "screen", "before", "during", converted[0]))/len(converted[0].keys())*100, "%", "av totalen")
+print(len(create_list(True, "screen", "before", "after", converted[0])), "har brukt skjerm mer etter pandemien enn før den,\t", len(create_list(True, "screen", "before", "after", converted[0]))/len(converted[0].keys())*100, "%", "av totalen")
+print(len(create_list(True, "screen", "during", "after", converted[0])), "har brukt skjerm mer etter pandemien enn under den,\t", len(create_list(True, "screen", "during", "after", converted[0]))/len(converted[0].keys())*100, "%", "av totalen")
+print(len(create_list(False, "screen", "before", "during", converted[0])), "har brukt skjerm mindre under pandemien enn før den,\t", len(create_list(False, "screen", "before", "during", converted[0]))/len(converted[0].keys())*100, "%", "av totalen")
+print(len(create_list(False, "screen", "before", "after", converted[0])), "har brukt skjerm mindre etter pandemien enn før den,\t", len(create_list(False, "screen", "before", "after", converted[0]))/len(converted[0].keys())*100, "%", "av totalen")
+print(len(create_list(False, "screen", "during", "after", converted[0])), "har brukt skjerm mindre etter pandemien enn under den,\t", len(create_list(False, "screen", "during", "after", converted[0]))/len(converted[0].keys())*100, "%", "av totalen")
 print()
 
 
 writetheage(create_list(True, "training", "before", "after", converted[0]), converted[0])
+writethelocation(create_list(True, "training", "before", "after", converted[0]), converted[0])
