@@ -135,7 +135,7 @@ def writetheage(data1, realdata):
         for i in range(len(data)):
             howmanyinages[data[i]["age"]] += 1
         for age in howmanyinages.keys():
-            print("    ", (howmanyinages[age]/numberanswered)*100, "%", "i aldersgruppen", age)
+            print("    ", round((howmanyinages[age]/numberanswered)*100, 2), "%", "i aldersgruppen", age)
 
 def writethelocation(data1, realdata):
     data = [realdata[i] for i in data1]
@@ -153,7 +153,7 @@ def writethelocation(data1, realdata):
         for i in range(len(data)):
             howmanyinlocations[data[i]["location"]] += 1
         for location in howmanyinlocations.keys():
-            print("    ", (howmanyinlocations[location]/numberanswered)*100, "%", "fra", location)
+            print("    ", round((howmanyinlocations[location]/numberanswered)*100, 2), "%", "fra", location)
 
 def writethegender(data1, realdata):
     data = [realdata[i] for i in data1]
@@ -171,7 +171,7 @@ def writethegender(data1, realdata):
         for i in range(len(data)):
             howmanyingenders[data[i]["gender"]] += 1
         for gender in howmanyingenders.keys():
-            print("    ", (howmanyingenders[gender]/numberanswered)*100, "%", gender)
+            print("    ", round((howmanyingenders[gender]/numberanswered)*100, 2), "%", gender)
 
 def writethebelief(data1, realdata):
     data = [realdata[i] for i in data1]
@@ -189,10 +189,10 @@ def writethebelief(data1, realdata):
         for i in range(len(data)):
             howmanyinbeliefs[data[i]["belief"]] += 1
         for belief in howmanyinbeliefs.keys():
-            print("    ", (howmanyinbeliefs[belief]/numberanswered)*100, "%", belief)
+            print("    ", round((howmanyinbeliefs[belief]/numberanswered)*100, 2), "%", belief)
 
 def writeall(hasincreased, what, start, end, data, mystring):
-    print(len(create_list(hasincreased, what, start, end, data)), mystring + ",", (len(create_list(hasincreased, what, start, end, data)))/len(data.keys())*100, "%", "av totalen")
+    print(len(create_list(hasincreased, what, start, end, data)), mystring + ",", round((len(create_list(hasincreased, what, start, end, data)))/len(data.keys())*100, 2), "%", "av totalen")
     writetheage(create_list(hasincreased, what, start, end, data), data)
     writethelocation(create_list(hasincreased, what, start, end, data), data)
     writethegender(create_list(hasincreased, what, start, end, data), data)
