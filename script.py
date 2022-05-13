@@ -173,11 +173,30 @@ def writethegender(data1, realdata):
         for gender in howmanyingenders.keys():
             print("    ", (howmanyingenders[gender]/numberanswered)*100, "%", gender)
 
+def writethebelief(data1, realdata):
+    data = [realdata[i] for i in data1]
+    exists = len(data) > 0
+    if exists:
+        print("    Av disse er:")
+        beliefspresent = []
+        for i in range(len(data)):
+            if data[i]["belief"] not in beliefspresent:
+                beliefspresent.append(data[i]["belief"])
+        howmanyinbeliefs = {}
+        numberanswered = len(data)
+        for belief in beliefspresent:
+            howmanyinbeliefs[belief] = 0
+        for i in range(len(data)):
+            howmanyinbeliefs[data[i]["belief"]] += 1
+        for belief in howmanyinbeliefs.keys():
+            print("    ", (howmanyinbeliefs[belief]/numberanswered)*100, "%", belief)
+
 def writeall(hasincreased, what, start, end, data, mystring):
     print(len(create_list(hasincreased, what, start, end, data)), mystring+",\t", (len(create_list(hasincreased, what, start, end, data)))/len(data.keys())*100, "%", "av totalen")
     writetheage(create_list(hasincreased, what, start, end, data), data)
     writethelocation(create_list(hasincreased, what, start, end, data), data)
     writethegender(create_list(hasincreased, what, start, end, data), data)
+    writethebelief(create_list(hasincreased, what, start, end, data), data)
 
 
 data = get_data("data.csv")
