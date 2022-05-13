@@ -235,21 +235,21 @@ plt.show()
 
 print("Av alle som har svart kommer:")
 for location in locations:
-    print(howmany(location, "location", converted[1]), "fra", location, ",\t", (howmany(location, "location", converted[1])/len(converted[0].keys()))*100, "%", "av totalen.")
+    print(howmany(location, "location", converted[1]), "fra " + location + "," + " "*(30-len(location)), round((howmany(location, "location", converted[1])/len(converted[0].keys()))*100, 2), "%", "av totalen.")
 print()
 print("Vi har fått svar fra:")
 for age in ["13-15 år", "16-17 år", "18-19 år"]:
     if howmany(age, "age", converted[1]) != 0:
-        print(howmany(age, "age", converted[1]), "i aldersgruppen", age, ",\t", (howmany(age, "age", converted[1])/len(converted[0].keys()))*100, "%", "av totalen.")
+        print(howmany(age, "age", converted[1]), "i aldersgruppen " + age + "," + " "*(30-len(age)), round((howmany(age, "age", converted[1])/len(converted[0].keys()))*100, 2), "%", "av totalen.")
 print()
 for gender in ["Mann", "Kvinne"]:
     if howmany(gender, "gender", converted[1]) != 0:
-        print(howmany(gender, "gender", converted[1]), "har kjønnet", gender, ",\t", (howmany(gender, "gender", converted[1])/len(converted[0].keys()))*100, "%", "av totalen.")
+        print(howmany(gender, "gender", converted[1]), "har kjønnet " + gender + "," + " "*(30-len(gender)), round((howmany(gender, "gender", converted[1])/len(converted[0].keys()))*100, 2), "%", "av totalen.")
 print()
 print("Om hvorvidt man mener skjermtid har økt fra før til etter pandemien svarer:")
 for belief in ["Ja", "Nei"]:
     if howmany(belief, "belief", converted[1]) != 0:
-        print(howmany(belief, "belief", converted[1]), belief, ",\t", (howmany(belief, "belief", converted[1])/len(converted[0].keys()))*100, "%", "av totalen.")
+        print(howmany(belief, "belief", converted[1]), belief + "," + " "*(30-len(belief)), round((howmany(belief, "belief", converted[1])/len(converted[0].keys()))*100, 2), "%", "av totalen.")
 print()
 print("Totalt har vi fått svar fra", len(converted[0].keys()), "personer")
 
