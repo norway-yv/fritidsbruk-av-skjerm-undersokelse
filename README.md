@@ -16,9 +16,7 @@ Dette repositoryet inneholder filer brukt for analyse av resultater etter en und
   - [x] Økning i skjermtid før-etter
   - [x] Samme for nedgang
 - [x] Print len(disse listene)
-- [ ] Demografi for disse listene:
-   - [ ] Alder
-   - [ ] Hvorfra
-   - [ ] Hvor mange prosent har økning/nedgang i trening samme periode som økning/nedgang skjermtid?
-### To Do akkurat nå:
-- [ ] Alder, siste commit er ikke funksjonell og gir errors. Skal skrive prosenter i for loop
+- [x] Demografi for disse listene:
+   - [x] Alder
+   - [x] Hvorfra
+   - [x] Hvor mange prosent har økning/nedgang i trening samme periode som økning/nedgang skjermtid?
