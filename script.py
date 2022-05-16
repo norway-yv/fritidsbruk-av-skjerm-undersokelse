@@ -191,12 +191,33 @@ def writethebelief(data1, realdata):
         for belief in howmanyinbeliefs.keys():
             print("    ", round((howmanyinbeliefs[belief]/numberanswered)*100, 2), "%", belief)
 
+def writetheother(whatever, what, data):
+    if len(whatever) > 0:
+        print("    Av disse har:")
+        mydict = {}
+        for id in whatever:
+            mydict[id] = data[id]
+        if what == "training":
+            what = "screen"
+            mystring = "brukt skjerm"
+        else:
+            what = "training"
+            mystring = "trent"
+        print("    ", len(create_list(True, what, "before", "during", mydict)), mystring, "mer under pandemien enn før den,", (len(create_list(True, what, "before", "during", mydict))/len(whatever))*100, "%")
+        print("    ", len(create_list(True, what, "before", "after", mydict)), mystring, "mer etter pandemien enn før den,", (len(create_list(True, what, "before", "after", mydict))/len(whatever))*100, "%")
+        print("    ", len(create_list(True, what, "during", "after", mydict)), mystring, "mer etter pandemien enn under den,", (len(create_list(True, what, "during", "after", mydict))/len(whatever))*100, "%")
+        print("    ", len(create_list(False, what, "before", "during", mydict)), mystring, "mindre under pandemien enn før den,", (len(create_list(False, what, "before", "during", mydict))/len(whatever))*100, "%")
+        print("    ", len(create_list(False, what, "before", "after", mydict)), mystring, "mindre etter pandemien enn før den,", (len(create_list(False, what, "before", "after", mydict))/len(whatever))*100, "%")
+        print("    ", len(create_list(False, what, "during", "after", mydict)), mystring, "mindre etter pandemien enn under den,", (len(create_list(False, what, "during", "after", mydict))/len(whatever))*100, "%")
+        
+
 def writeall(hasincreased, what, start, end, data, mystring):
     print(len(create_list(hasincreased, what, start, end, data)), mystring + ",", round((len(create_list(hasincreased, what, start, end, data)))/len(data.keys())*100, 2), "%", "av totalen")
     writetheage(create_list(hasincreased, what, start, end, data), data)
     writethelocation(create_list(hasincreased, what, start, end, data), data)
     writethegender(create_list(hasincreased, what, start, end, data), data)
     writethebelief(create_list(hasincreased, what, start, end, data), data)
+    writetheother(create_list(hasincreased, what, start, end, data), what, data)
 
 
 data = get_data("data.csv")
